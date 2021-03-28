@@ -1,6 +1,6 @@
 {
-  "appId": "com.mobilethemes.multi",
-  "appName": "Ionic Multi",
+  "appId": "com.arachnidev.baratto",
+  "appName": "Baratto",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

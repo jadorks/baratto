@@ -1,4 +1,4 @@
-package com.mobilethemes.multi;
+package com.arachnidev.baratto;
 
 import android.os.Bundle;
 
