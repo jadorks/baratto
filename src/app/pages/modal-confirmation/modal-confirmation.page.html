@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button
+      size="small"
+      color="light"
+      (click)="dismissModal()"
+    >
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="container ion-padding">
+    <ion-img [src]="info.icon"></ion-img>
+    <div>
+      <h4>{{ info.title }}</h4>
+      <p>{{ info.text }}</p>
+    </div>
+    <ion-button class="action-button" expand="block" fill="clear">
+      <div class="button-text">
+        <span>Continue shopping</span>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </div>
+    </ion-button>
+  </div>
+</ion-content>

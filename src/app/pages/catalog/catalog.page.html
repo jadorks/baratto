@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Catalog</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true" class="ion-padding-horizontal">
+    <ion-grid>
+      <ion-row class="ion-no-padding">
+        <ion-col class="ion-padding-vertical">
+          <ion-searchbar animated class="ion-no-padding"></ion-searchbar>
+        </ion-col>
+      </ion-row>      
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-item lines="none" class="section">
+            <ion-text color="dark">
+              <h5>Latest Products</h5>
+            </ion-text>
+            <ion-buttons slot="end">
+              <ion-button
+              slot="end"
+              fill="clear"
+              size="small"
+              shape="round"
+              color="medium"
+              class="small-button"
+              (click)="changeView('grid')"
+            >
+              <ion-icon slot="icon-only" name="grid-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button
+              slot="end"
+              fill="clear"
+              size="small"
+              shape="round"
+              color="medium"
+              class="small-button"
+              (click)="changeView('card')"
+            >
+              <ion-icon slot="icon-only" name="square-outline"></ion-icon>
+            </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding">
+        <ng-container [ngSwitch]="layout">
+          <ng-container *ngSwitchCase="'grid'">
+            <ion-col size="6" *ngFor="let item of items" class="ion-no-padding">
+              <app-product-card-sm [data]="item"></app-product-card-sm>
+            </ion-col>
+          </ng-container>
+          <ng-container *ngSwitchCase="'card'">
+            <ion-col  size="12" *ngFor="let item of items" class="ion-no-padding">
+              <app-product-card-md [data]="item"></app-product-card-md>
+            </ion-col>
+          </ng-container>
+          
+        </ng-container>
+
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  

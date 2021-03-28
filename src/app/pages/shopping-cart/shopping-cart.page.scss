@@ -1,0 +1,111 @@
+.action-button {
+  --border-radius: 6px;
+  --box-shadow: none !important;
+  height: 48px;
+  margin: 20px 10px;
+
+  span {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: initial;
+    color: #ffffff;
+  }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(228, 228, 228, 0.4);
+}
+
+.section {
+  font-weight: 600;
+  margin: 0 !important;
+}
+
+
+ion-item-option {
+  background: none;
+}
+
+.notif-button {
+  --border-radius: 50%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.item-options-ios  {
+  border-bottom-style: none;
+}
+
+.ios > .notif-button {
+  width: auto !important;
+  height: auto !important;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.input-container {
+  --background: transparent;
+  --inner-padding-end: 0;
+  margin-top: 16px;
+
+  ion-input {
+    border: 1px solid rgba(228, 228, 228, 0.6);
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: #ffffff;
+    --padding-start: 16px;
+    min-height: 46px;
+  }
+}
+
+.coupon-button {
+  height: 46px;
+  margin: 0 0 0 6px;
+  --border-radius: 6px;
+  --box-shadow: none !important;
+
+  span {
+    padding: 0 12px;
+  }
+}
+
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(228, 228, 228, 0.40);
+}
+
+.invoice-item {
+  --inner-padding-end: 0;
+  --inner-padding-top: 0;
+  --inner-padding-bottom: 0;
+  --padding-start: 0 !important;
+  --min-height: 32px;
+
+  ion-label {
+    margin: 0 !important;
+    text-align: left;
+    font-size: 13px;
+  }
+
+  ion-text {
+    font-size: 13px;
+  }
+}
+
+
+.invoice-total {
+  --inner-padding-end: 0;
+  --inner-padding-top: 0;
+  --inner-padding-bottom: 0;
+  --padding-start: 0 !important;
+  --min-height: 32px;
+}

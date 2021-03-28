@@ -1,0 +1,35 @@
+<ion-card [ngClass]="color">
+  <ion-item lines="none" class="user_data" [ngClass]="color">
+    <ion-avatar slot="start">
+      <img [src]="info.author.photo" />
+    </ion-avatar>
+    <ion-label>
+     <p>{{ info.author.name }}</p> 
+    </ion-label>
+    <ion-label slot="end" class="ion-no-margin ion-text-right">
+      <span>{{ info.date | humanizeDate }}</span>
+    </ion-label>
+  </ion-item>
+  <ion-card-header class="ion-text-left">
+    <ion-card-title>{{ info.title }}</ion-card-title>
+    <ion-card-subtitle>{{ info.subtitle }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="icon-container ion-text-left">
+      <ul>
+        <li>
+          <ion-item lines="none" [ngClass]="color">
+            <ion-icon name="heart-outline"></ion-icon>
+            <ion-label>{{ info.likes }}</ion-label>
+          </ion-item>
+        </li>
+        <li>
+          <ion-item lines="none" [ngClass]="color">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <ion-label>{{ info.saved }}</ion-label>
+          </ion-item>
+        </li>
+      </ul>
+    </div>
+  </ion-card-content>
+</ion-card>

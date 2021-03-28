@@ -1,0 +1,69 @@
+<ion-card class="ion-no-margin">
+  <ion-card-title>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img [src]="avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="item-title">{{ name }}</h2>
+        <p class="item-subtitle">{{ date }}</p>
+      </ion-label>
+      <ion-button
+        slot="end"
+        fill="clear"
+        size="small"
+        shape="round"
+        color="primary"
+      >
+        <ion-icon
+          slot="icon-only"
+          name="ellipsis-horizontal-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card-title>
+  <ion-card-content class="ion-no-padding">
+    <img [src]="image" />
+    <div class="card-footer">
+      <div class="stats-container">
+        <ul class="avatars">
+          <li class="avatar-item" *ngFor="let item of avatars">
+            <img [src]="item?.image" class="avatar-img" />
+          </li>
+        </ul>
+        <span>{{ likes }}</span>
+      </div>
+      <ion-buttons>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          <ion-icon slot="icon-only" name="chatbubble-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <p *ngIf="text">{{ text }}</p>
+  </ion-card-content>
+</ion-card>
+<div *ngIf="separator" class="separator ion-margin-vertical"></div>

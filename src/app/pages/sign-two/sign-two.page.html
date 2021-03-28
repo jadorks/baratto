@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" class="background-opts" [ngStyle]="background">
+	<ion-header class="ion-no-border">
+		<ion-toolbar>
+			<ion-buttons slot="start">
+				<ion-menu-button></ion-menu-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+	<div class="container">
+		<ion-grid class="ion-padding-horizontal">
+			<ion-row class="ion-padding-vertical">
+				<ion-col size="9">
+					<h1 class="title">Create an account</h1>
+					<ion-text class="mb">Create your account and join to our community today.</ion-text>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-grid class="ion-padding white">
+			<ion-row class="ion-padding-top">
+				<ion-col>
+					<form [formGroup]="signForm" (ngSubmit)="signIn()">
+						<ion-item lines="none" class="ion-no-padding">
+							<ion-label class="input-label" position="stacked">Full Name</ion-label>
+							<ion-input type="text" formControlName="fullName"></ion-input>
+						</ion-item>
+						<div class="errors-container" *ngIf="signForm.get('fullName').invalid && (signForm.get('fullName').dirty || signForm.get('fullName').touched)">
+							<ng-container *ngIf="signForm.get('fullName').errors.required">Full Name is required</ng-container>
+						</div> 
+						<ion-item lines="none" class="ion-no-padding">
+							<ion-label class="input-label" position="stacked">Email Address</ion-label>
+							<ion-input type="email" formControlName="email"></ion-input>
+						</ion-item>
+						<div class="errors-container" *ngIf="signForm.get('email').invalid && (signForm.get('email').dirty || signForm.get('email').touched)">
+							<ng-container *ngIf="signForm.get('email').errors.required">Email is required</ng-container>
+							<ng-container *ngIf="signForm.get('email').errors.invalidEmail">Email is invalid</ng-container>
+						</div>
+						
+						<ion-item lines="none" class="ion-no-padding">
+							<ion-label class="input-label" position="stacked">Password</ion-label>
+							<ion-input type="password" formControlName="password"></ion-input>
+						</ion-item>
+						<div class="errors-container" *ngIf="signForm.get('password').invalid && (signForm.get('password').dirty || signForm.get('password').touched)">
+							<ng-container *ngIf="signForm.get('password').errors.required">Password is required</ng-container>
+							<ng-container *ngIf="signForm.get('password').errors.invalidPassword">{{signForm.get('password').errors.message}}</ng-container>
+						</div>
+						<ion-button [disabled]="signForm.invalid" class="action-button" expand="block" fill="solid" color="primary" type="submit">
+							<span>Get started</span>
+						</ion-button>
+					</form>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+</ion-content>

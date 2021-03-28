@@ -1,0 +1,24 @@
+<ion-card [ngClass]="product.gradient" class="ion-no-padding">
+  <ion-card-header>
+    <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
+    <ion-card-title>{{ product.title }}</ion-card-title>
+    <p>{{ product.price | currency }}</p>
+  </ion-card-header>
+  <ion-card-content class="ion-no-padding">
+    <img [src]="product.image" />
+
+    <div class="container">
+      <ion-button
+        class="small-button white"
+        fill="clear"
+        size="small"
+        shape="round"
+        color="primary"
+      >
+        <ion-icon 
+        slot="icon-only"        
+        name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>

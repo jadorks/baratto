@@ -1,0 +1,22 @@
+ion-card {
+    box-shadow: none !important;
+}
+
+ion-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-card-title {
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--ion-color-dark);
+    margin-bottom: 8px;
+}
+
+ion-card-subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ion-color-medium);   
+}

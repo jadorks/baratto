@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Add payment details</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+	<ion-grid class="ion-padding-horizontal">
+		<ion-row class="ion-no-padding">
+			<ion-col>
+				<app-credit-card [cardColor]="typeCard" [type]="typeCard" [number]="cardNumber"
+					[owner]="cardForm.value.cardholder" [expires]="expires"></app-credit-card>
+			</ion-col>
+		</ion-row>
+		<form [formGroup]="cardForm">
+			<ion-row class="ion-padding-top">
+				<ion-col>
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input type="text" placeholder="Cardholder Name"
+							formControlName="cardholder"></ion-input>
+					</ion-item>
+					<div class="errors-container" *ngIf="(cardForm.get('cardholder')?.dirty &&
+					cardForm.get('cardholder')?.errors)">
+				  <ng-container
+					*ngIf="cardForm.get('cardholder')?.hasError('required')"
+				  >
+					Please enter your full name.
+				  </ng-container>
+				  <ng-container
+					*ngIf="cardForm.get('cardholder')?.hasError('pattern')"
+				  >
+					Only letters. 
+				  </ng-container>						
+					</div>
+					<ion-item lines="none" class="ion-no-padding ion-margin-top">
+						<ion-input type="tel" placeholder="Card Number"
+							formControlName="number"></ion-input>
+					</ion-item>
+					<div class="errors-container"  *ngIf="(cardForm.get('number')?.dirty &&
+					cardForm.get('number')?.errors)">
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('required')"
+				  >
+					Please enter your credit card number.
+				  </ng-container>
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('pattern')"
+				  >
+					Only numbers.
+				  </ng-container>						
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('minlength')"
+				  >
+					Check your credit card number.
+				  </ng-container>						
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('maxlength')"
+				  >
+					Check your credit card number.
+				  </ng-container>						
+					</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input (click)="openPicker('month')" type="number" placeholder="Exp Month" formControlName="expMonth" readonly>
+						</ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input (click)="openPicker('year')" type="number" min="2015" placeholder="Exp Year" formControlName="expYear" readonly>
+						</ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input type="number" placeholder="CVC" formControlName="cvc">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item lines="none" class="ion-no-padding mb">
+						<ion-label slot="start">Set as default</ion-label>
+						<ion-toggle mode="ios" slot="end" color="primary" formControlName="default"></ion-toggle>
+					</ion-item>
+					<ion-button [disabled]="cardForm.invalid" class="action-button ion-margin-top" expand="block" fill="solid" color="primary"
+						type="submit">
+						<span>Add Card</span>
+					</ion-button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</ion-grid>
+</ion-content>

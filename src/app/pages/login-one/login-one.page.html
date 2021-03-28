@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true" class="background-opts" [ngStyle]="background">
+	<ion-header class="ion-no-border">
+		<ion-toolbar>
+			<ion-buttons slot="start">
+				<ion-menu-button></ion-menu-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+	<ion-grid class="ion-padding-horizontal">
+		<ion-row class="ion-padding-vertical">
+			<ion-col size="9" class="ion-padding-vertical">
+				<h1 class="title">Sign In</h1>
+				<ion-text class="mb">Enter your email and password for signing in.</ion-text>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-padding-top">
+			<ion-col class="ion-padding-vertical">
+				<form [formGroup]="loginForm" (ngSubmit)="signIn()">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input placeholder="Email Address" type="email"  formControlName="email">
+						</ion-input>
+					</ion-item>
+					<div class="errors-container" *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+						<ng-container *ngIf="loginForm.get('email').errors.required">Email is required</ng-container>
+						<ng-container *ngIf="loginForm.get('email').errors.invalidEmail">Email is invalid</ng-container>
+					</div>
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input placeholder="Password" type="password"
+							formControlName="password"></ion-input>
+					</ion-item>
+					<div class="errors-container" *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+						<ng-container *ngIf="loginForm.get('password').errors.required">Password is required</ng-container>
+						<ng-container *ngIf="loginForm.get('password').errors.invalidPassword">{{loginForm.get('password').errors.message}}</ng-container>
+					</div>
+					<ion-item lines="none" class="ion-no-padding mb">
+						<ion-label slot="start">Enable Face ID</ion-label>
+						<ion-toggle mode="ios" slot="end" color="primary" formControlName="faceID"></ion-toggle>
+					</ion-item>
+					<ion-button [disabled]="loginForm.invalid" class="action-button" expand="block" fill="solid" color="primary" type="submit">
+						<span>Get started</span>
+					</ion-button>
+				</form>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-text-center ion-padding-bottom">
+				<a class="link" [routerLink]="">Forgot password?</a>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

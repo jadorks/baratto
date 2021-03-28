@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-card-header>
+    <img [src]="product.image" />
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card-title>{{ product.title }}</ion-card-title>
+    <ion-card-subtitle>{{ product.price | currency }}</ion-card-subtitle>    
+  </ion-card-content>
+</ion-card>

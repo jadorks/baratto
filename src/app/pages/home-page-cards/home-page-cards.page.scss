@@ -1,0 +1,27 @@
+ion-header ion-toolbar {
+  --background: transparent !important;
+}
+
+.section {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: none;
+
+  h5 {
+    font-size: 17px;
+    color: #151522;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 0;
+  }
+}
+
+.text-small {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}
+
+.white {
+  background: #ffffff;
+  border-radius: 50%;
+}

@@ -1,0 +1,35 @@
+<ion-card class="{{ cardColor }}">
+  <ion-card-header>
+    <ng-container *ngIf="type; else elseType">
+      <img [src]="'assets/cards/chip.svg'" class="chip"/>
+      <img [src]="'assets/cards/' + type + '.svg'" />
+    </ng-container>
+    <ng-template #elseType>
+      <img [src]="'assets/cards/chip.svg'" />
+      <img [src]="'assets/cards/card.svg'" />
+    </ng-template>
+    
+  </ion-card-header>
+  <ion-card-content>
+    <ion-text>**** **** **** {{ number }}</ion-text>
+    <div class="data">
+      <ul>
+        <li><span>Card Holder</span></li>
+        <li>
+          <p>{{ owner }}</p>
+        </li>
+      </ul>
+      <ul>
+        <li><span>Expires</span></li>
+        <li>
+          <ng-container *ngIf="expires; else elseExpires">
+            <p>{{ expires }}</p>
+          </ng-container>
+          <ng-template #elseExpires>
+            <p>01/00</p>
+          </ng-template>
+        </li>
+      </ul>
+    </div>   
+  </ion-card-content>
+</ion-card>

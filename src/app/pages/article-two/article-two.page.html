@@ -1,0 +1,123 @@
+<ion-content [fullscreen]="true">
+<ion-grid class="ion-no-padding ion-no-margin background-opts" [ngStyle]="background">
+  <ion-row>
+    <ion-col class="header-container">
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <div class="title-container ion-padding">
+        <p>{{ article.category }}</p>
+        <h1>{{ article.title }}</h1>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="ion-padding-horizontal">
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-avatar slot="start">
+          <img
+            [src]="article.avatar"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="item-title">{{ article.author }}</h2>
+          <p class="item-subtitle">{{ article.date | humanizeDate }}</p>
+        </ion-label>
+        <ion-button
+          class="circle-btn"
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          <ion-icon
+            slot="icon-only"
+            name="ellipsis-horizontal-outline"
+          ></ion-icon>
+        </ion-button>
+      </ion-item>
+      <div class="article-footer">
+        <div>
+          <ul>
+            <li>
+              <ion-item lines="none">
+                <ion-icon color="medium" name="heart-outline"></ion-icon>
+                <ion-label>{{ article.likes }}</ion-label>
+              </ion-item>
+            </li>
+            <li>
+              <ion-item lines="none">
+                <ion-icon color="medium" name="chatbubble-outline"></ion-icon>
+                <ion-label>{{ article.comments }}</ion-label>
+              </ion-item>
+            </li>
+            <li>
+              <ion-item lines="none">
+                <ion-icon color="medium" name="bookmark-outline"></ion-icon>
+                <ion-label>{{ article.saved }}</ion-label>
+              </ion-item>
+            </li>
+          </ul>
+        </div>
+        <ion-button
+          class="circle-btn"
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p class="text">{{ article.short }}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <app-article-quote
+        [text]="quote.text"
+        [author]="quote.author"
+        [from]="quote.from"
+      ></app-article-quote>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-text>Comments</ion-text>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          Write a comment
+        </ion-button>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <app-article-comment *ngFor="let comment of comments"
+      [avatar]="comment.avatar"
+      [author]="comment.author"
+      [date]="comment.date | humanizeDate"
+      [comment]="comment.comment"
+      ></app-article-comment>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

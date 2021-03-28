@@ -1,0 +1,139 @@
+ion-header ion-toolbar {
+  /* --background: rgba(83, 177, 117, 0.25); */
+  --background: transparent;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 28px;
+    color: #181725;
+    margin: 0;
+  }
+
+  span {
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 26px;
+    color: rgba(21, 21, 34, 0.7);
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+
+  ion-text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.1px;
+    color: #181725;
+  }
+
+  ul {
+    padding-left: 0;
+    margin: 0;
+
+    li:nth-child(2) {
+      padding: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+
+      ion-button {
+        width: 36px;
+        height: 36px;
+        --border-radius: 14px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        ion-icon {
+          color: var(--ion-color-primary);
+          font-weight: 700;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.fixed-top {
+  --top: calc(var(--ion-safe-area-top) + var(--offset-top));
+  height: auto;
+  position: relative;
+  top: calc(-1 * var(--top));
+
+  img {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.border {
+  border-radius: 0 0 30px 0;
+}
+
+.max {
+  max-height: 245px;
+}
+
+.action-button {
+  --border-radius: 6px;
+  --box-shadow: none !important;
+  min-height: 48px;
+  box-shadow: 0px 4px 8px rgba(50, 50, 71, 0.06),
+    0px 4px 4px rgba(50, 50, 71, 0.08);
+
+  span {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: initial;
+  }
+}
+
+.fav-btn {
+  --border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.spec {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+
+  ion-icon {
+	padding-right: 8px;
+	font-size: 24px;
+  }
+
+  ion-label {
+    font-size: 13px;
+    line-height: 22px;
+    color: #151522;
+	white-space: normal;
+	margin: 0;
+  }
+}

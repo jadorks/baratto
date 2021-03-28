@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Filters</ion-title>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Price Range</h5>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-range
+          min="0"
+          max="500"
+          color="primary"
+          dualKnobs="true"
+          pin="true"
+        >
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">500</ion-label>
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Categories</h5>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-selectable-btn
+          *ngFor="let item of categories"
+          [text]="item.category"
+          (state)="getState($event)"
+        ></app-selectable-btn>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Brand</h5>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-selectable-btn
+          *ngFor="let item of brands"
+          [text]="item.brand"
+          (state)="getState($event)"
+        ></app-selectable-btn>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-padding-horizontal ion-padding-bottom ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="action-button"
+      expand="block"
+      fill="solid"
+      color="primary"
+    >
+      <div class="button-text">
+        <span>Search</span>
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

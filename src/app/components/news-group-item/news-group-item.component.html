@@ -1,0 +1,10 @@
+<ion-card>
+  <ion-card-header class="ion-no-padding">
+    <div class="image" *ngFor="let item of info.images">
+      <img [src]="item" />
+    </div>
+  </ion-card-header>
+  <ion-card-content class="ion-no-padding">
+    <ion-badge *ngFor="let badge of info.tags">{{ badge }}</ion-badge>
+  </ion-card-content>
+</ion-card>

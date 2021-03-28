@@ -1,0 +1,104 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Explore</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <app-product-collection [data]="ads" [textShadow]="false"></app-product-collection>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Popular</h5>
+          </ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            See All
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <!-- Slides -->
+        <ion-slides [options]="slideConfig">
+          <ion-slide *ngFor="let item of products;">
+            <app-product-card [product]="item"></app-product-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Flash Sale</h5>
+          </ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            See All
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <!-- Slides -->
+        <ion-slides [options]="flashConfig">
+          <ion-slide *ngFor="let item of products;">
+            <app-product-card-basic [product]="item"></app-product-card-basic>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>You may like</h5>
+          </ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            See All
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <app-product-card-item *ngFor="let item of products" [product]="item"></app-product-card-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

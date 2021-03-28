@@ -1,0 +1,10 @@
+<ion-card>
+  <ion-card-header class="ion-no-padding">
+    <ion-badge class="badge" color="danger">{{ data?.badge }}</ion-badge>
+    <img [src]="data?.image" />
+  </ion-card-header>
+  <ion-card-content>
+    <p>{{ data?.text }}</p>
+    <span>{{ data?.price | currency }}</span>
+  </ion-card-content>
+</ion-card>

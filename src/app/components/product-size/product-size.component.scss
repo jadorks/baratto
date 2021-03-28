@@ -1,0 +1,22 @@
+.size_picker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  --box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ion-color-primary);
+}
+
+.size_picker.active {
+  background: var(--ion-color-primary);
+}
+
+span.active {
+  color: #ffffff !important;
+}
+span {
+  color: var(--ion-color-primary);
+  font-size: 13px;
+}

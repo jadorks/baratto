@@ -1,0 +1,121 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Product Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-slides pager="true" [options]="imgConfig" class="product-slides">
+        <ion-slide *ngFor="let item of product.images">
+          <ion-card>
+            <ion-card-content class="ion-no-padding">
+              <img src="{{ item.image }}" alt="" />
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <div class="details ion-text-center">
+        <span>{{ product.category }}</span>
+        <h2> {{ product.name }}</h2>
+        <p>{{ product.price | currency }}</p>
+
+        <ion-button
+        class="action-button"
+        expand="block"
+        fill="solid"
+        color="primary"
+        type="button"
+      >
+        <span>Add to cart</span>
+      </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="separator ion-margin-vertical"></div>
+  <ion-row>
+    <ion-col>
+      <div class="pick-container">
+        <div>
+          <ion-text>Color</ion-text>
+        </div>
+        <div class="item-container">
+          <app-product-color *ngFor="let item of product.colors"
+          [color]="item.code"></app-product-color>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="separator ion-margin-vertical"></div>
+  <ion-row>
+    <ion-col>
+      <div class="pick-container">
+        <div>
+          <ion-text>Size</ion-text>
+        </div>
+        <div class="item-container">
+          <app-product-size *ngFor="let item of product.sizes"
+          [size]="item"></app-product-size>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="separator ion-margin-vertical"></div>
+  <ion-row>
+    <ion-col>
+      <ion-text>About</ion-text>
+      <p class="about">{{ product.about }}</p>
+    </ion-col>
+  </ion-row>
+  <div class="separator ion-margin-vertical"></div>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-text>Overall Score</ion-text>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          See All
+        </ion-button>
+      </ion-item>
+      <app-review-counter [data]="product.reviews"></app-review-counter>
+    </ion-col>
+  </ion-row>
+  <div class="separator ion-margin-vertical"></div>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-text>You might all like</ion-text>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+          See All
+        </ion-button>
+      </ion-item>
+
+      <ion-slides [options]="relatedConfig">
+        <ion-slide *ngFor="let item of product.related">
+          <app-product-card-sm [data]="item"></app-product-card-sm>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button
+      size="small"
+      color="light"
+      (click)="dismissModal()"
+    >
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="container ion-padding">
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img [src]="info.author.avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="item-title">{{ info.author.name }}</h2>
+        <p class="item-subtitle">{{ info.author.caption }}</p>
+      </ion-label>
+    </ion-item>
+    <div>
+      <h4>{{ info.headline }}</h4>
+      <p>{{ info.body }}</p>
+    </div>
+    <ion-button class="action-button" fill="clear">
+      <div class="button-text">
+        <span>Read Article</span>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </div>
+    </ion-button>
+  </div>
+</ion-content>

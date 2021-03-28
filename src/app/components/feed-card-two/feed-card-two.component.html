@@ -1,0 +1,44 @@
+<ion-card class="ion-no-margin">
+  <ion-card-title class="ion-padding-bottom">
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img [src]="avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="item-title">{{ name }}</h2>
+        <p class="item-subtitle">{{ date }}</p>
+      </ion-label>
+      <ion-button
+        slot="end"
+        fill="clear"
+        size="small"
+        shape="round"
+        color="primary"
+      >
+        <ion-icon
+          slot="icon-only"
+          name="ellipsis-horizontal-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card-title>
+  <ion-card-content class="ion-no-padding">
+    <div class="card-stats">
+      <div class="icon-container">
+        <div class="stat">
+          <ion-icon color="danger" name="heart-outline"></ion-icon>
+          <ion-label>{{ likes }}</ion-label>
+        </div>
+        <div class="stat">
+          <ion-icon color="medium" name="chatbubble-outline"></ion-icon>
+          <ion-label>{{ comments }}</ion-label>
+        </div>
+      </div>
+    </div>
+    <div class="content-container">
+      <p *ngIf="text">{{ text }}</p>
+      <img *ngIf="image" [src]="image" />
+    </div>
+  </ion-card-content>
+</ion-card>
+<div *ngIf="separator" class="separator ion-margin-vertical"></div>

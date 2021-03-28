@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Empty states</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-justify-content-center ion-align-items-center">
+  <ion-grid>
+    <ion-row class="ion-no-padding">
+      <ion-col size="12">
+        <ion-slides [options]="slideConfig" [pager]="true">
+          <ion-slide *ngFor="let item of empty">
+            <app-empty-state class="ion-margin-bottom" [item]="item"></app-empty-state>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

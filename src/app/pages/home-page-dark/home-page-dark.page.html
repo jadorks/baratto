@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding ion-no-margin background-opts ion-no-border" [ngStyle]="background">
+    <ion-row>
+      <ion-col class="header-container">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <div class="title-container ion-padding">
+          <h1>All About Summer Nights</h1>
+          <p>Bright Encounters</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Popular</h5>
+          </ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            See All
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <!-- Slides -->
+        <ion-slides [options]="slideConfig">
+          <ion-slide *ngFor="let item of categories;">
+            <app-card-category-news
+              [image]="item.image"
+              [title]="item.name"
+              [caption]="item.items"
+              [color]="'dark'"
+            ></app-card-category-news>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>For You</h5>
+          </ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            See All
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <!-- Slides -->
+        <ion-slides [options]="slideConfig">
+          <ion-slide *ngFor="let item of favorites;">
+            <app-card-favorite-news
+              [image]="item.image"
+              [text]="item.text"
+              [color]="'dark'"
+            ></app-card-favorite-news>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

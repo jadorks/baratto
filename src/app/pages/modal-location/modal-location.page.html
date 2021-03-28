@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button
+      size="small"
+      color="light"
+      (click)="dismissModal()"
+    >
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="container ion-padding-horizontal">
+    <ion-img [src]="info.icon"></ion-img>
+    <div>
+      <h4 class="ion-no-margin">{{ info.title }}</h4>
+      <p>{{ info.text }}</p>
+    </div>
+    <ion-button class="action-button" expand="block" fill="solid" color="danger">
+      <div class="button-text">
+        <span>Turn on location</span>
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+    </ion-button>
+  </div>
+</ion-content>

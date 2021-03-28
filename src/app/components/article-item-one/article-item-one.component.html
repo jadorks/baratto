@@ -1,0 +1,24 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+      <img src="{{ image }}">
+  </ion-thumbnail>
+  <ion-label>
+    <p>{{ title }}</p>
+    <div class="icon-container">
+      <ul>
+        <li>
+          <ion-item lines="none">
+            <ion-icon color="danger" name="heart-outline"></ion-icon>
+            <ion-label>{{ likes }}</ion-label>
+          </ion-item>
+        </li>
+        <li>
+          <ion-item lines="none">
+            <ion-icon color="primary" name="chatbubble-outline"></ion-icon>
+            <ion-label>{{ saved }}</ion-label>
+          </ion-item>
+        </li>
+      </ul>
+    </div>
+  </ion-label>
+</ion-item>

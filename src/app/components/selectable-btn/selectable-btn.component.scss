@@ -1,0 +1,11 @@
+.selectable-btn {
+    font-weight: 400;
+    --border-radius: 12px;
+    text-transform: initial;
+  }
+  
+  ion-button.active {
+    --background: var(--ion-color-primary) !important;
+    --color: #fff;
+  }
+  

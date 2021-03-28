@@ -1,0 +1,60 @@
+ion-card {
+  box-shadow: none !important;
+  border-radius: 10px;
+}
+
+ion-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-weight: 500;
+    font-size: 19px;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 24px;
+    color: #ffffff;
+    width: min-content;
+    margin: 4px 0;
+  }
+
+  span {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  img {
+    width: auto;
+    height: 140px;
+    object-fit: cover;
+  }
+}
+
+.content {
+  height: 100%;
+}
+
+.shadow {
+  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.blue_to_pink {
+  background: linear-gradient(90deg, #4f99fc 0%, #f48b90 100%);
+}
+
+.blue_to_cyan {
+  background: linear-gradient(90deg, #4b9bfe 0%, #39dcc9 100%);
+}
+
+.navy_to_cyan {
+  background: linear-gradient(90deg, #1d64dd 0%, #39cff0 100%);
+}
+
+.green_to_pink {
+  background: linear-gradient(90deg, #39dcc9 0%, #f48b90 100%);
+}

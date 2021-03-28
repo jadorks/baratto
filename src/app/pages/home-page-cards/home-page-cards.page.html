@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button class="white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>Headlines</h5>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-slides [options]="slideConfig">
+          <ion-slide *ngFor="let item of news">
+            <app-news-card
+              [color]="item.color"
+              [info]="item"
+            ></app-news-card> </ion-slide
+        ></ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5>New this week</h5>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" class="ion-no-padding">
+        <app-news-card-item
+          *ngFor="let item of withImages"
+          [item]="item"
+        ></app-news-card-item>
+      </ion-col>
+      <ion-col size="6">
+        <app-news-group-item [info]="moreImages"></app-news-group-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

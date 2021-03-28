@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Shopping Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item-sliding *ngFor="let item of order.items">
+            <app-shopping-cart-item
+              [image]="item.image"
+              [name]="item.name"
+              [size]="item.size"
+              [color]="item.color"
+              [price]="item.price | currency"
+            >
+            </app-shopping-cart-item>
+            <ion-item-options side="end">
+              <ion-item-option>
+                <ion-button
+                  class="notif-button"
+                  fill="clear"
+                  size="small"
+                  shape="round"
+                  color="danger"
+                >
+                  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-button>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p class="section ion-padding-bottom">Summary</p>
+        <small>Do you have a promo code?</small>
+        <form [formGroup]="couponForm" (ngSubmit)="applyCode()">
+          <ion-item lines="none" class="input-container ion-no-padding">
+            <ion-input
+              type="text"
+              class="ion-no-padding"
+              formControlName="coupon"
+            ></ion-input>
+            <ion-button
+              slot="end"
+              class="coupon-button"
+              color="light"
+              type="submit"
+            >
+              <span>Apply</span>
+            </ion-button>
+          </ion-item>
+        </form>
+        <ion-list>
+          <ion-item lines="none" class="invoice-item">
+            <ion-label>Subtotal</ion-label>
+            <ion-text slot="end">{{ order.subTotal | currency }}</ion-text>
+          </ion-item>
+          <ion-item lines="none" class="invoice-item">
+            <ion-label>Shipping</ion-label>
+            <ion-text slot="end">{{ order.shipping | currency }}</ion-text>
+          </ion-item>
+          <ion-item lines="none" class="invoice-item">
+            <ion-label>Tax</ion-label>
+            <ion-text slot="end">({{ order.tax }}%) {{ order.taxAmount | currency }}</ion-text>
+          </ion-item>
+        </ion-list>
+        <div class="separator"></div>
+        <ion-item lines="none" class="invoice-total">
+          <ion-label>Total</ion-label>
+          <ion-text slot="end">{{ order.total | currency }}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          class="action-button"
+          expand="block"
+          fill="solid"
+          color="primary"
+          type="button"
+        >
+          <span>Checkout Now</span>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

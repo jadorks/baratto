@@ -1,0 +1,32 @@
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+
+  ion-thumbnail {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 85px;
+    height: 85px;
+    --border-radius: 10px;
+    background: #F7F7F7;
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+.text {
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(21, 21, 34, 0.8);
+  white-space: normal;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #151522;
+  margin-bottom: 0;
+}

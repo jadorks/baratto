@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true" class="background-opts" [ngStyle]="background">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container">
+    <ion-grid class="ion-padding-horizontal">
+      <ion-row class="ion-padding-vertical">
+        <ion-col size="9" class="ion-padding-vertical">
+         
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="ion-padding white">
+      <ion-row class="ion-padding-top">
+        <ion-col>
+          <ion-card class="ion-text-center">
+            <ion-card-subtitle class="ion-padding-bottom">{{ article.category }}</ion-card-subtitle>
+            <ion-card-title class="ion-padding-bottom">{{ article.title }} </ion-card-title>
+            <ion-card-content class="ion-no-padding">
+              <p>{{ article.short }}</p>
+              <div class="icon-container">
+                <ul>
+                  <li>
+                    <ion-item lines="none">
+                      <ion-icon color="light" name="time-outline"></ion-icon>
+                      <ion-label> {{ article.date | humanizeDate }}</ion-label>
+                    </ion-item>
+                  </li>
+                  <li>
+                    <ion-item lines="none">
+                      <ion-icon color="light" name="chatbubble-outline"></ion-icon>
+                      <ion-label>{{ article.comments }}</ion-label>
+                    </ion-item>
+                  </li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Feed</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5 class="section-title">To Get Inspired</h5>
+          </ion-text>
+          <a slot="end" [routerLink]="">See All</a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="12" size-md="6" size-lg="4" size-xl="4" *ngFor="let item of articles">
+        <app-article-item-one
+        
+        [image]="item.image"
+        [title]="item.title"
+        [likes]="item.likes"
+        [saved]="item.saved"
+        >
+        </app-article-item-one>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col
+        size-sm="12"
+        size-md="6"
+        size-lg="4"
+        size-lg="4"
+        *ngFor="let item of feeds"
+      >
+        <app-feed-card-one
+          [avatar]="item.avatar"
+          [name]="item.name"
+          [date]="item.date | humanizeDate"
+          [text]="item.text"
+          [image]="item.image"
+          [likes]="item.likes"
+          [comments]="item.comments"
+          [separator]="true"
+        >
+        </app-feed-card-one>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="none" class="section">
+          <ion-text color="dark">
+            <h5 class="section-title">Latest news</h5>
+          </ion-text>
+          <a slot="end" [routerLink]="">See All</a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="12" size-md="6" size-lg="4" size-lg="4" *ngFor="let item of articles">
+        <app-article-item-two
+        
+        [image]="item.image"
+        [category]="item.category"        
+        [text]="item.text"        
+        [date]="item.date | humanizeDate"        
+        >
+        </app-article-item-two>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

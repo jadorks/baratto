@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-card-header class="ion-no-padding">
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img [src]="avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="item-title">{{ author }}</h2>
+        <p class="item-subtitle">{{ date }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content class="ion-no-padding">
+    <p>{{ comment }}</p>
+  </ion-card-content>
+</ion-card>
+

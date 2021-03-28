@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding ion-no-margin background">
+    <ion-row>
+      <ion-col class="header-container">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <div class="title-container ion-padding">
+          <p>{{ article.category }}</p>
+          <h1>{{ article.title }}</h1>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-avatar slot="start">
+              <img [src]="article.avatar" />
+            </ion-avatar>
+            <ion-label>
+              <h2 class="item-title">{{ article.author }}</h2>
+              <p class="item-subtitle">{{ article.date | humanizeDate }}</p>
+            </ion-label>
+            <ion-button
+              class="circle-btn"
+              slot="end"
+              fill="clear"
+              size="small"
+              shape="round"
+              color="light"
+            >
+              <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col>
+        <p class="text">{{ article.short }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-article-picture
+        [photo]="article.picture.photo"
+        [author]="article.picture.author"
+        ></app-article-picture>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-text>Comments</ion-text>
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            Write a comment
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-article-comment *ngFor="let comment of comments"
+        [avatar]="comment.avatar"
+        [author]="comment.author"
+        [date]="comment.date | humanizeDate"
+        [comment]="comment.comment"
+        ></app-article-comment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

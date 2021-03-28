@@ -1,0 +1,33 @@
+<ion-card>
+  <ion-card-content class="ion-no-padding">
+    <img [src]="data?.image" />
+    <div class="overlay">
+      <div class="top">
+        <div class="badge" *ngIf="data?.badge">{{ data?.badge }}</div>
+        <ion-button
+          fill="clear"
+          size="small"
+          shape="round"
+          color="danger"
+          class="small-button"
+        >
+          <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="content">
+        <p class="name">{{ data?.name }}</p>
+        <span>{{ data?.price | currency }}</span>
+
+        <ion-button
+        class="action-button"
+        expand="block"
+        fill="solid"
+        color="primary"
+        type="button"
+      >
+        <span>Add to cart</span>
+      </ion-button>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

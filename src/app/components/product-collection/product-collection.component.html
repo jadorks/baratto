@@ -1,0 +1,9 @@
+<ion-card [ngClass]="data.gradient">
+  <ion-card-content>
+    <div class="content" [ngClass]="{ shadow: textShadow }">
+      <span>{{ data.label }}</span>
+      <p>{{ data.category }}</p>
+    </div>
+    <img [src]="data.image" />
+  </ion-card-content>
+</ion-card>

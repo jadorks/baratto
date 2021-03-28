@@ -1,0 +1,53 @@
+ion-card {
+  box-shadow: none;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  .quote {
+    padding-right: 16px;
+
+    img {
+      width: 100px;
+      height: auto;
+    }
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    p {
+      color: #999999;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline;
+      }
+
+      li:nth-child(1) {
+        padding: 8px;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: #151522;
+      }
+
+      li:nth-child(2) {
+        color: #999999;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

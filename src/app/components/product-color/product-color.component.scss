@@ -1,0 +1,18 @@
+.color_picker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  --box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color_picker.active {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+ion-icon {
+  color: #ffffff;
+  font-size: 28px;
+}

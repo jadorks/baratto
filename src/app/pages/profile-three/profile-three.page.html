@@ -1,0 +1,85 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div class="profile">
+        <ion-avatar>
+          <img
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+            alt=""
+            srcset=""
+          />
+        </ion-avatar>
+        <h4 class="ion-margin-vertical">Tina Turner</h4>
+        <p>
+          tina.turner@gmail.com
+        </p>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6" class="ion-padding-vertical">
+        <ion-button class="action-button" expand="block" fill="solid" color="primary">
+          <span>Follow</span>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-padding-vertical">
+      <ion-button class="action-button" expand="block"  fill="outline" color="primary">
+        <span>Message</span>
+    </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-padding-bottom">
+    <ion-col>
+      <ion-segment [(ngModel)]="valueType">
+				<ion-segment-button value="article">
+					Articles
+				</ion-segment-button>
+				<ion-segment-button value="photo">
+					Photos
+				</ion-segment-button>
+				<ion-segment-button value="favorite">
+					Favorites
+				</ion-segment-button>
+			</ion-segment>
+    </ion-col>
+  </ion-row>
+  <div [ngSwitch]="valueType">
+    <ion-row *ngSwitchCase="'article'" class="ion-no-padding">
+      <ion-col size="6" *ngFor="let item of articles" class="ion-no-padding">
+        <app-small-blog-card
+        [text]="item.title"
+        [category]="item.category"
+        [date]="item.date"
+        [color]="item.color"
+        ></app-small-blog-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngSwitchCase="'photo'">
+      <ion-col size="4" *ngFor="let photo of photos">
+        <img class="image-element" [src]="photo" alt="">
+      </ion-col>
+    </ion-row>
+    <ion-row *ngSwitchCase="'favorite'">
+      <ion-col size="6" *ngFor="let item of favorites">
+        <app-card-favorite-news [image]="item.image" [text]="item.text"></app-card-favorite-news>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-grid>
+</ion-content>

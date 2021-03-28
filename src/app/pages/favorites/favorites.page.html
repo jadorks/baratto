@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-slides pager="true" [options]="itemsConfig">
+        <ion-slide *ngFor="let item of items">
+          <app-product-card-lg
+          [data]="item"
+          ></app-product-card-lg>
+      </ion-slide>
+    </ion-slides>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

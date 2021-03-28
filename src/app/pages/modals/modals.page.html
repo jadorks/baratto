@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Modals</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="6">
+        <app-feature-card
+          [icon]="'person-circle-outline'"
+          [title]="'Profile'"
+          (click)="getProfile()"
+        ></app-feature-card>
+      </ion-col>
+      <ion-col size="6">
+        <app-feature-card
+          [icon]="'location-outline'"
+          [title]="'Location'"
+          (click)="turnLocation()"
+        ></app-feature-card>
+      </ion-col>
+      <ion-col size="6">
+        <app-feature-card
+          [icon]="'checkmark-circle-outline'"
+          [title]="'Confirmation'"
+          (click)="confirm()"
+        ></app-feature-card>
+      </ion-col>
+      <ion-col size="6">
+        <app-feature-card
+          [icon]="'document-text-outline'"
+          [title]="'Article'"
+          (click)="showArticle()"
+        ></app-feature-card>
+      </ion-col>
+      <ion-col size="6">
+        <app-feature-card
+          [icon]="'mail-open-outline'"
+          [title]="'Subscribe'"
+          (click)="subscribeMail()"
+        ></app-feature-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

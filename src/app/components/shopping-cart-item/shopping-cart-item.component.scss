@@ -1,0 +1,35 @@
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-bottom: 16px;
+
+  ion-thumbnail {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100px;
+    height: 100px;
+    --border-radius: 4px;
+  }
+}
+
+.name {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--ion-color-dark);
+  white-space: normal;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 18px;
+  color: var(--ion-color-primary);
+}
+
+.info {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ion-color-medium);
+  margin-bottom: 6px;
+}

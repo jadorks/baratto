@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+	<ion-grid class="ion-padding-horizontal">
+		<ion-row class="ion-no-padding">
+			<ion-col class="ion-text-center">
+				<h1 class="title">Add payment details</h1>
+				<p class="mb ion-padding-horizontal">
+					Fill the form and start buying today.
+				</p>
+			</ion-col>
+		</ion-row>
+		<form [formGroup]="cardForm">
+			<ion-row class="ion-padding-top">
+				<ion-col>
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-label class="input-label" position="stacked">Cardholder Name</ion-label>
+						<ion-input type="text" formControlName="cardholder"></ion-input>
+					</ion-item>
+					<div class="errors-container"  *ngIf="(cardForm.get('cardholder')?.dirty &&
+					cardForm.get('cardholder')?.errors)">
+				  <ng-container
+					*ngIf="cardForm.get('cardholder')?.hasError('required')"
+				  >
+					Please enter your full name
+				  </ng-container>
+				  <ng-container
+					*ngIf="cardForm.get('cardholder')?.hasError('pattern')"
+				  >
+					Only letters 
+				  </ng-container>						
+					</div>
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-label class="input-label" position="stacked">Card Number</ion-label>
+						<ion-input type="tel" [ngClass]="typeCard" formControlName="number"></ion-input>
+					</ion-item>
+					<div class="errors-container"  *ngIf="(cardForm.get('number')?.dirty &&
+					cardForm.get('number')?.errors)">
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('required')"
+				  >
+					Please enter your credit card number
+				  </ng-container>
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('pattern')"
+				  >
+					Only numbers
+				  </ng-container>						
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('minlength')"
+				  >
+					Check your credit card number
+				  </ng-container>						
+				  <ng-container
+					*ngIf="cardForm.get('number')?.hasError('maxlength')"
+				  >
+					Check your credit card number
+				  </ng-container>						
+					</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-label class="input-label" position="stacked">Exp Month</ion-label>
+						<ion-input (click)="openPicker('month')" type="number" formControlName="expMonth" readonly></ion-input>
+					</ion-item>					
+				</ion-col>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-label class="input-label" position="stacked">Exp Year</ion-label>
+						<ion-input (click)="openPicker('year')" type="number" min="2015" formControlName="expYear" readonly>
+						</ion-input>
+					</ion-item>					
+				</ion-col>
+				<ion-col size="4">
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-label class="input-label" position="stacked">CVC</ion-label>
+						<ion-input type="number" formControlName="cvc"></ion-input>
+					</ion-item>
+					<div class="errors-container"  *ngIf="(cardForm.get('cvc')?.dirty &&
+					cardForm.get('cvc')?.errors)">
+				  <ng-container
+					*ngIf="cardForm.get('cvc')?.hasError('required')"
+				  >
+					Enter your CVC
+				  </ng-container>											
+					</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item lines="none" class="ion-no-padding mb">
+						<ion-label slot="start">Set as default</ion-label>
+						<ion-toggle mode="ios" slot="end" color="primary" formControlName="default"></ion-toggle>
+					</ion-item>
+					<ion-button class="action-button ion-margin-top" expand="block" fill="solid" color="primary"
+						type="submit">
+						<span>Add Card</span>
+					</ion-button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</ion-grid>
+</ion-content>

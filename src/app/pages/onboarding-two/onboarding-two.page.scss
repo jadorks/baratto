@@ -1,0 +1,56 @@
+ion-header ion-toolbar {
+  --background: transparent;
+}
+
+ion-card {
+  box-shadow: none !important;
+  --background: transparent;
+
+  ion-card-header {
+    margin-bottom: 2rem;
+    
+
+    img {
+      height: 40vh;
+    }
+  }
+
+  ion-card-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  ion-card-subtitle {
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+}
+
+ion-slides {
+  height: 100%;
+}
+
+.action-button {
+    --border-radius: 6px;
+    --box-shadow: none !important;
+    height: 52px;
+    box-shadow: 0px 4px 8px rgba(50, 50, 71, 0.06),
+      0px 4px 4px rgba(50, 50, 71, 0.08);
+  
+    span {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 22px;
+      text-transform: initial;
+    }
+  }
+
+  ion-footer {
+      min-height: 84px;
+  }

@@ -1,0 +1,17 @@
+{
+  "appId": "com.mobilethemes.multi",
+  "appName": "Ionic Multi",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": false,
+      "showSpinner": true,
+      "splashFullScreen": true,
+      "androidSplashResourceName": "splash"
+    }
+  },
+  "cordova": {}
+}
