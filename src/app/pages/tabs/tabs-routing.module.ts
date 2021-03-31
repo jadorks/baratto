@@ -44,7 +44,11 @@ const routes: Routes = [
           [
             {
               path: '',
+<<<<<<< HEAD
               loadChildren: () => import("../profile-three/profile-three.module").then( m => m.ProfileThreePageModule),
+=======
+              loadChildren: () => import("../settings-three/settings-three.module").then( m => m.SettingsThreePageModule),
+>>>>>>> a85a5df82dfe06001161f344686d716bbc81dfe5
             }
           ]
       },

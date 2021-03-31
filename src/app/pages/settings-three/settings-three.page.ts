@@ -10,27 +10,22 @@ export class SettingsThreePage implements OnInit {
   menu = [
     {
       icon: 'cart-outline',
-      title: 'My Shopping Cart',
-      subtitle: '5 items ready to process',
+      title: 'My Items',
+      subtitle: 'View your items',
     },
     {
-      icon: 'document-outline',
-      title: 'My Orders',
-      subtitle: '2 orders ready to process',
+      icon: 'cash-outline',
+      title: 'Transactions',
+      subtitle: 'View incoming/ outgoing transactions',
     },
     {
-      icon: 'map-outline',
-      title: 'My Addresses',
-      subtitle: '3 addresses',
-    },
-    {
-      icon: 'card-outline',
-      title: 'My Payments Methods',
-      subtitle: '3 methods registered',
+      icon: 'send-outline',
+      title: 'Messages',
+      subtitle: 'Chat with other users',
     },
     {
       icon: 'settings-outline',
-      title: 'App Settings',
+      title: 'Settings',
       subtitle: 'Customize your app experience',
     },
   ];
