@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { emailValidator } from 'src/app/validators/email.validators';
 import { passwordValidator } from 'src/app/validators/password.validator';
 
@@ -15,11 +15,12 @@ export class SignThreePage implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.signForm = this.formBuilder.group({
-      fullName: [null, [Validators.required]],
-      email: [null, [Validators.required, emailValidator]],
-      password: [null, [Validators.required, passwordValidator]],
-    });
+    this.signForm = new FormGroup({
+      'username': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required, emailValidator]),
+      'password': new FormControl(null, [Validators.required, passwordValidator]),
+      'password_confirm': new FormControl(null, [Validators.required])
+    }, this.passwordMatch);
   }
 
   signIn() {
@@ -29,4 +30,12 @@ export class SignThreePage implements OnInit {
       console.log('invalid');
     }
   }
+
+  passwordMatch(frm: FormGroup): { invalid: boolean } {
+    if (frm.get('password').value !== frm.get('password_confirm').value){
+      return {invalid: true};
+    }
+  }
+
+
 }

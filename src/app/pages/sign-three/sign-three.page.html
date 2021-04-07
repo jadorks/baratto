@@ -1,8 +1,8 @@
 <ion-header class="ion-no-border">
 	<ion-toolbar>
-		<ion-buttons slot="start">
+		<!-- <ion-buttons slot="start">
 			<ion-menu-button></ion-menu-button>
-		</ion-buttons>
+		</ion-buttons> -->
 	</ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
@@ -11,7 +11,7 @@
 			<ion-col class="ion-text-center">
 				<h1 class="title">Create an account</h1>
 				<p class="mb ion-padding-horizontal">
-					Create your account and join to our community today.
+					Create your account and join Baratto today.
 				</p>
 			</ion-col>
 		</ion-row>
@@ -19,11 +19,11 @@
 			<ion-col>
 				<form [formGroup]="signForm" (ngSubmit)="signIn()">
 					<ion-item lines="none" class="ion-no-padding">
-						<ion-input placeholder="Full Name" type="text"  formControlName="fullName">
+						<ion-input placeholder="Username" type="text"  formControlName="username">
 						</ion-input>
 					</ion-item>
-					<div class="errors-container" *ngIf="signForm.get('fullName').invalid && (signForm.get('fullName').dirty || signForm.get('fullName').touched)">
-						<ng-container *ngIf="signForm.get('fullName').errors.required">Full Name is required</ng-container>
+					<div class="errors-container" *ngIf="signForm.get('username').invalid && (signForm.get('username').dirty || signForm.get('username').touched)">
+						<ng-container *ngIf="signForm.get('username').errors.required">Full Name is required</ng-container>
 					</div>
 					
 					<ion-item lines="none" class="ion-no-padding">
@@ -44,9 +44,18 @@
 						<ng-container *ngIf="signForm.get('password').errors.invalidPassword">{{ signForm.get('password').errors.message }}</ng-container>
 					</div>
 					
+					<ion-item lines="none" class="ion-no-padding">
+						<ion-input placeholder="Confirm Password" type="password"
+							formControlName="password_confirm"></ion-input>
+					</ion-item>
+					<div class="errors-container" *ngIf="signForm.get('password').value != signForm.get('password_confirm').value && (signForm.get('password').dirty || signForm.get('password').touched)">
+						<ng-container>Passwords do not match</ng-container>
+					</div>
+
+					
 					<ion-button [disabled]="signForm.invalid" class="action-button ion-margin-top" expand="block" fill="solid" color="primary"
 						type="submit">
-						<span>Sign In</span>
+						<span>Sign Up</span>
 					</ion-button>
 				</form>
 			</ion-col>
