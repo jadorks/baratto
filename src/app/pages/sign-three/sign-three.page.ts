@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { emailValidator } from 'src/app/validators/email.validators';
 import { passwordValidator } from 'src/app/validators/password.validator';
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-sign-three',
@@ -12,7 +13,7 @@ export class SignThreePage implements OnInit {
 
   signForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.signForm = new FormGroup({
@@ -25,7 +26,7 @@ export class SignThreePage implements OnInit {
 
   signIn() {
     if (this.signForm.valid) {
-      console.log(this.signForm.value);
+      this.userService.registerUser(this.signForm.get('username').value, this.signForm.get('email').value, this.signForm.get('password').value, this.signForm.get('password_confirm').value)
     } else {
       console.log('invalid');
     }

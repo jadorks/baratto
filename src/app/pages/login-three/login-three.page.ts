@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from 'src/app/validators/email.validators';
 import { passwordValidator } from 'src/app/validators/password.validator';
+import { UserService } from "../../services/user.service";
+
 
 @Component({
   selector: 'app-login-three',
@@ -12,18 +14,25 @@ export class LoginThreePage implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, emailValidator]],
-      password: [null, [Validators.required, passwordValidator]],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
     });
   }
 
   signIn() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      this.userService.loginUser(this.loginForm.get('username').value, this.loginForm.get('password').value);
+      if(this.userService.errors.length){
+        alert('Error Logging In');
+        return;
+      }
+      else{
+        console.log(this.userService.token);
+      }
     } else {
       console.log('invalid');
     }
