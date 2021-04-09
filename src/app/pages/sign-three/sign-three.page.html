@@ -3,6 +3,9 @@
 		<!-- <ion-buttons slot="start">
 			<ion-menu-button></ion-menu-button>
 		</ion-buttons> -->
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
@@ -17,7 +20,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<form [formGroup]="signForm" (ngSubmit)="signIn()">
+				<form [formGroup]="signForm" (ngSubmit)="register()">
 					<ion-item lines="none" class="ion-no-padding">
 						<ion-input placeholder="Username" type="text"  formControlName="username">
 						</ion-input>

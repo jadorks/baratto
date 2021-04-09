@@ -1,35 +1,51 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { Observable, BehaviorSubject, from, Subject } from 'rxjs';
+import { map, tap, switchMap } from 'rxjs/operators';
+
+import { Plugins } from "@capacitor/core";
+const { Storage } = Plugins;
+const TOKEN_KEY = 'token'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  baseUrl: string = "http://127.0.0.1:8000"
-  errors=[]
-  token:any;
+  isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
-  constructor(private httpClient: HttpClient) { }
+  baseUrl: string = "http://127.0.0.1:8000";
+  token = '';
+
+  constructor(private httpClient: HttpClient) { 
+    this.loadToken();
+  }
+
+  async loadToken(){
+    const token = await Storage.get({ key: TOKEN_KEY });
+    if( token && token.value ){
+      console.log('set token: ', token.value);
+      this.token = token.value;
+      this.isAuthenticated.next(true);
+    } else {
+      this.isAuthenticated.next(false);
+    }
+  }
 
   public loginUser(username: string, password: string){
     let user = {
       "username": username,
       "password": password
     }
-    return this.httpClient.post(this.baseUrl + '/rest-auth/login/', user)
-    .subscribe(
-      data => {
-        if(this.errors.length){
-          this.errors = [];
-        }
-        this.token=data;
-      }, error => {
-        this.errors.push(error);
-      }
-    );
+    return this.httpClient.post(this.baseUrl + '/rest-auth/login/', user).pipe(
+      map((data: any) => data.key),
+      switchMap(key => {
+        return from(Storage.set({key: TOKEN_KEY, value: key}));
+      }),
+      tap(_ => {
+        this.isAuthenticated.next(true);
+      })
+    )
   }
 
   public registerUser(username: string, email: string, password: string, password2: string){
@@ -40,7 +56,25 @@ export class UserService {
       "password2": password2
     };
 
-    return this.httpClient.post(this.baseUrl + '/rest-auth/registration/', user)
+
+    return this.httpClient.post(this.baseUrl + '/rest-auth/registration/', user).pipe(
+      map((data: any) => data.key),
+      switchMap(key => {
+        return from(Storage.set({key: TOKEN_KEY, value: key}));
+      }),
+      tap(_ => {
+        this.isAuthenticated.next(true);
+      })
+    )
+
+  }
+
+  public forgotPass(email: string){
+    let user = {
+      "email": email
+    };
+
+    return this.httpClient.post(this.baseUrl + '/rest-auth/password/reset/', user)
     .subscribe(
       data => {
         console.log(data);
@@ -48,11 +82,11 @@ export class UserService {
         console.log(error);
       }
     )
-
   }
 
-  public forgotPass(){
-
+  public logout(): Promise<void>{
+    this.isAuthenticated.next(false);
+    return Storage.remove({key: TOKEN_KEY});
   }
 
   public resetPass(){
