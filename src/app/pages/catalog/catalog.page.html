@@ -3,7 +3,10 @@
       <!-- <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons> -->
-      <ion-title>Catalog</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ category.title }}</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -51,13 +54,13 @@
       <ion-row class="ion-no-padding">
         <ng-container [ngSwitch]="layout">
           <ng-container *ngSwitchCase="'grid'">
-            <ion-col size="6" *ngFor="let item of items" class="ion-no-padding">
-              <app-product-card-sm [data]="item"></app-product-card-sm>
+            <ion-col size="6" *ngFor="let product of products" class="ion-no-padding">
+              <app-product-card-sm [data]="product" [routerLink]="['/details/', product.id]"></app-product-card-sm>
             </ion-col>
           </ng-container>
           <ng-container *ngSwitchCase="'card'">
-            <ion-col  size="12" *ngFor="let item of items" class="ion-no-padding">
-              <app-product-card-md [data]="item"></app-product-card-md>
+            <ion-col  size="12" *ngFor="let product of products" class="ion-no-padding">
+              <app-product-card-md [data]="product" [routerLink]="['/details/', product.id]"></app-product-card-md>
             </ion-col>
           </ng-container>
           

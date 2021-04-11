@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
+import { Product, ProductService, Category } from "../../services/product.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-catalog',
@@ -9,6 +11,9 @@ import { Animation, AnimationController } from '@ionic/angular';
 export class CatalogPage implements OnInit {
 
   layout = 'grid';
+
+  products: any = []
+  category: any = {}
 
   items = [
     {
@@ -49,11 +54,23 @@ export class CatalogPage implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit()  {
 
+  }
+
+  ionViewWillEnter() {
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    
+    this.productService.getCategory(id).subscribe((category) => {
+      this.category = category;
+    });
+
+    this.productService.getCategoryProducts(id).subscribe((products: Product[]) => {
+      this.products = products;
+    });
   }
 
   changeView(param) {

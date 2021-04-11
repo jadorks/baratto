@@ -1,8 +1,20 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+          <img class="ava-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
+      </ion-avatar>
+      <ion-label class="ion-no-margin">
+        <h3>Tina Marina</h3>
+        <p>Seller Profile</p>
+      </ion-label>
+    </ion-item>
     <ion-title>Product Detail</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,10 +24,10 @@
   <ion-row>
     <ion-col class="ion-no-padding">
       <ion-slides pager="true" [options]="imgConfig" class="product-slides">
-        <ion-slide *ngFor="let item of product.images">
+        <ion-slide>
           <ion-card>
             <ion-card-content class="ion-no-padding">
-              <img src="{{ item.image }}" alt="" />
+              <img class="prod-img" src="{{ product.image }}" alt="" />
             </ion-card-content>
           </ion-card>
         </ion-slide>
@@ -25,8 +37,8 @@
   <ion-row>
     <ion-col class="ion-no-padding">
       <div class="details ion-text-center">
-        <span>{{ product.category }}</span>
-        <h2> {{ product.name }}</h2>
+        <!-- <span>{{ product.category }}</span> -->
+        <h2> {{ product.title }}</h2>
         <p>{{ product.price | currency }}</p>
 
         <ion-button
@@ -36,13 +48,13 @@
         color="primary"
         type="button"
       >
-        <span>Add to cart</span>
+        <span>Start Trade</span>
       </ion-button>
       </div>
     </ion-col>
   </ion-row>
-  <div class="separator ion-margin-vertical"></div>
-  <ion-row>
+  <!-- <div class="separator ion-margin-vertical"></div> -->
+  <!-- <ion-row>
     <ion-col>
       <div class="pick-container">
         <div>
@@ -54,8 +66,8 @@
         </div>
       </div>
     </ion-col>
-  </ion-row>
-  <div class="separator ion-margin-vertical"></div>
+  </ion-row> -->
+  <!-- <div class="separator ion-margin-vertical"></div>
   <ion-row>
     <ion-col>
       <div class="pick-container">
@@ -68,16 +80,16 @@
         </div>
       </div>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
   <div class="separator ion-margin-vertical"></div>
   <ion-row>
     <ion-col>
       <ion-text>About</ion-text>
-      <p class="about">{{ product.about }}</p>
+      <p class="about">{{ product.description }}</p>
     </ion-col>
   </ion-row>
   <div class="separator ion-margin-vertical"></div>
-  <ion-row>
+  <!--<ion-row>
     <ion-col class="ion-no-padding">
       <ion-item lines="none" class="ion-no-padding">
         <ion-text>Overall Score</ion-text>
@@ -116,6 +128,7 @@
         </ion-slide>
       </ion-slides>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
+
 </ion-grid>
 </ion-content>

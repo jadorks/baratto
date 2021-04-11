@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product, ProductService } from "../../services/product.service";
 
 @Component({
   selector: 'app-home-page-store',
@@ -6,38 +7,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page-store.page.scss'],
 })
 export class HomePageStorePage implements OnInit {
-  products = [
-    {
-      image: 'assets/products/shoe1.png',
-      title: 'Nike Runner XT 200',
-      price: 245.99,
-      category: 'Running',
-      gradient: 'blue_to_pink',
-      discount: '0.12'
-    },
-    {
-      image: 'assets/products/shoe5.png',
-      title: 'Nike Dual Fusion GT',
-      price: 405.99,
-      category: 'Running',
-      gradient: 'blue_to_cyan'
-    },
-    {
-      image: 'assets/products/shoe3.png',
-      title: 'Nike Air Jordan Jnr',
-      price: 99.99,
-      category: 'Urban Style',
-      gradient: 'navy_to_cyan',
-      discount: '0.40'
-    },
-    {
-      image: 'assets/products/shoe4.png',
-      title: 'Nike Air Max Junior',
-      price: 99.99,
-      category: 'Urban Style',
-      gradient: 'green_to_pink'
-    },
-  ];
+  // products = [
+  //   {
+  //     image: 'assets/products/shoe1.png',
+  //     title: 'Nike Runner XT 200',
+  //     price: 245.99,
+  //     category: 'Running',
+  //     gradient: 'blue_to_pink',
+  //     discount: '0.12'
+  //   },
+  //   {
+  //     image: 'assets/products/shoe5.png',
+  //     title: 'Nike Dual Fusion GT',
+  //     price: 405.99,
+  //     category: 'Running',
+  //     gradient: 'blue_to_cyan'
+  //   },
+  //   {
+  //     image: 'assets/products/shoe3.png',
+  //     title: 'Nike Air Jordan Jnr',
+  //     price: 99.99,
+  //     category: 'Urban Style',
+  //     gradient: 'navy_to_cyan',
+  //     discount: '0.40'
+  //   },
+  //   {
+  //     image: 'assets/products/shoe4.png',
+  //     title: 'Nike Air Max Junior',
+  //     price: 99.99,
+  //     category: 'Urban Style',
+  //     gradient: 'green_to_pink'
+  //   },
+  // ];
+
+  products: Product[] = [];
 
   ads = {
     image: 'assets/products/shoe-ad.png',
@@ -56,7 +59,14 @@ export class HomePageStorePage implements OnInit {
     slidesPerView: 2.3
   };
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      console.log(products);
+      this.products = products;
+    })
+  }
 }

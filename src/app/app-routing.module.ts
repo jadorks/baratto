@@ -30,9 +30,23 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'details/:id',
+    loadChildren: () => import('./pages/product-detail/product-detail.module').then( m => m.ProductDetailPageModule ),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'category/:id',
+    loadChildren: () => import('./pages/catalog/catalog.module').then( m => m.CatalogPageModule ),
+    canLoad: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   }
 ];
 

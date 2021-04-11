@@ -96,7 +96,7 @@
     <ion-row>
       <ion-col>
         <ion-list>
-          <app-product-card-item *ngFor="let item of products" [product]="item"></app-product-card-item>
+          <app-product-card-item *ngFor="let item of products" [product]="item" [routerLink]="['/details/', item.id]"></app-product-card-item>
         </ion-list>
       </ion-col>
     </ion-row>

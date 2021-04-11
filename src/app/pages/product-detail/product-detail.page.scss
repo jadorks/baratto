@@ -2,12 +2,21 @@
     min-height: 330px;
 }
 
+ion-avatar {
+    width: 40px;
+    height: 40px;
+  
+    .ava-img {
+      border: 1px solid rgba(228, 228, 228, 0.6);
+    }
+  }
+
 ion-card {
     box-shadow: none !important;
     min-height: 285px;
 }
 
-img {
+.prod-img {
     width: 100%;
     height: 275px;
     background-color: rgba($color: #c4c4c4, $alpha: 1.0);

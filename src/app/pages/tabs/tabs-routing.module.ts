@@ -24,7 +24,7 @@ const routes: Routes = [
           [
             {
               path: '',
-              loadChildren: () => import("../catalog/catalog.module").then( m => m.CatalogPageModule),
+              loadChildren: () => import("../categories/categories.module").then( m => m.CategoriesPageModule ),
             }
           ]
       },
