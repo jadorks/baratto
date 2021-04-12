@@ -44,10 +44,6 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  {
-    path: 'categories',
-    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
-  }
 ];
 
 @NgModule({

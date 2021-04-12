@@ -29,6 +29,16 @@ const routes: Routes = [
           ]
       },
       {
+        path: 'add',
+        children:
+          [
+            {
+              path: '',
+              loadChildren: () => import("../add-item/add-item.module").then( m => m.AddItemPageModule ),
+            }
+          ]
+      },
+      {
         path: 'favorites',
         children:
           [
