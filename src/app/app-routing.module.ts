@@ -40,10 +40,20 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'user-catalog',
+    loadChildren: () => import('./pages/user-catalog/user-catalog.module').then( m => m.UserCatalogPageModule)
+  },
+  {
+    path: 'user-details/:id',
+    loadChildren: () => import('./pages/user-details/user-details.module').then( m => m.UserDetailsPageModule)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
+
+
 ];
 
 @NgModule({
