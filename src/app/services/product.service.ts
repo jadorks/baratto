@@ -115,6 +115,18 @@ export class ProductService {
       map((data: any)=> console.log(data)),
     )
   }
+
+  public editProduct(id, formData): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Token ' + this.token,
+      }),
+    };
+
+    return this.http.put(this.baseURL + '/update/' + id + '/', formData, httpOptions).pipe(
+      map((data: any) => console.log(data))
+    );
+  }
 }
 
 export class Product{

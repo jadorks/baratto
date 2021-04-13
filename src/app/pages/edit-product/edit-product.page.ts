@@ -3,18 +3,21 @@ import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms"
 import { ActionSheetController, AlertController, LoadingController, Platform } from "@ionic/angular";
 import { ProductService, Category } from "../../services/product.service";
 import { Plugins, CameraResultType, CameraSource } from "@capacitor/core";
+import { ActivatedRoute } from '@angular/router';
 const { Camera } = Plugins;
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.page.html',
-  styleUrls: ['./add-item.page.scss'],
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.page.html',
+  styleUrls: ['./edit-product.page.scss'],
 })
-export class AddItemPage implements OnInit {
+export class EditProductPage implements OnInit {
 
-  productForm: FormGroup;
+  editForm: FormGroup;
+  id: any;
   categories: Category[] = [];
   formData: FormData;
+  product: any = {}
 
   constructor(
     private productService: ProductService,
@@ -22,58 +25,49 @@ export class AddItemPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private plt: Platform,
-    private actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private activatedRoute: ActivatedRoute
   ) { 
     this.formData = new FormData();
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    this.productForm = new FormGroup({
+    this.editForm = new FormGroup({
       'productName': new FormControl(null, []),
       'price': new FormControl(null, []),
       'description': new FormControl(null, []),
-      'chosenCat': new FormControl(null, []),
     });
   }
 
   ionViewWillEnter(){
-    this.productService.getCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-    })
-  }
+    this.productService.getProduct(this.id).subscribe(
+      result => {
+        this.product = result;
+        this.productName.setValue(this.product.title);
+        this.price.setValue(this.product.price);
+        this.description.setValue(this.product.description);
+      }
+    )
 
-  get productName(){
-    return this.productForm.get('productName')
-  }
 
-  get price(){
-    return this.productForm.get('price')
-  }
-
-  get description(){
-    return this.productForm.get('description')
-  }
-
-  get category(){
-    return this.productForm.get('chosenCat')
   }
 
   async submitProduct(){
     this.formData.append("title", this.productName.value);
     this.formData.append("price", this.price.value);
     this.formData.append("description", this.description.value);
-    this.formData.append("category", this.category.value);
 
     const loading = await this.loadingController.create();
     await loading.present();
     
-    this.productService.createProduct(this.formData).subscribe(
+    this.productService.editProduct(this.product.id, this.formData).subscribe(
       async (res) => {
         await loading.dismiss();
         
         const alert = await this.alertController.create({
-          header: 'New Product Created',
-          message: 'Your product has been created',
+          header: 'Listing Edited',
+          message: 'Your product listing has been edited',
           buttons: ['OK'],
         });
 
@@ -83,8 +77,8 @@ export class AddItemPage implements OnInit {
         await loading.dismiss();
 
         const alert = await this.alertController.create({
-          header: 'Product Creation Failed',
-          message: 'Failed to create product',
+          header: 'Listing Edit Failed',
+          message: 'Failed to edit product listing',
           buttons: ['OK'],
         });
 
@@ -93,6 +87,7 @@ export class AddItemPage implements OnInit {
 
     )
   }
+
 
   async chooseOrTakePicture() {
     const image = await Plugins.Camera.getPhoto({
@@ -114,6 +109,7 @@ export class AddItemPage implements OnInit {
     }
   }
 
+
   public b64toBlob(b64Data, contentType = '', sliceSize = 512) {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
@@ -134,4 +130,15 @@ export class AddItemPage implements OnInit {
     return blob;
   }
 
+  get productName(){
+    return this.editForm.get('productName')
+  }
+
+  get price(){
+    return this.editForm.get('price')
+  }
+
+  get description(){
+    return this.editForm.get('description')
+  }
 }

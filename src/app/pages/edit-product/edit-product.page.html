@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Edit Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="editForm" (ngSubmit)="submitProduct()">
+          <ion-item>
+            <ion-label position="floating" class="ion-no-padding">Product Name <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="productName" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" class="ion-no-padding">Price (GHC) <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="price" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" class="ion-no-padding">Description <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="description" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item class="ion-no-padding">
+            <ion-button (click)="chooseOrTakePicture()" expand="block" fill="clear" shape="round">
+              Choose Image
+            </ion-button>
+          </ion-item>
+          
+          <ion-button block color="primary" type="submit" [disabled]="editForm.invalid">
+            Edit Product
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

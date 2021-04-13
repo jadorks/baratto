@@ -52,6 +52,10 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
+  {
+    path: 'edit-product/:id',
+    loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule)
+  },
 
 
 ];
