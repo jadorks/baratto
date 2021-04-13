@@ -47,7 +47,11 @@ const routes: Routes = [
   {
     path: 'categories',
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
+  },  {
+    path: 'chatbox',
+    loadChildren: () => import('./chatbox/chatbox.module').then( m => m.ChatboxPageModule)
   }
+
 ];
 
 @NgModule({
