@@ -114,6 +114,8 @@ export class UserService {
       }),
     };
 
+    console.log(this.token);
+
     return this.httpClient.get(this.baseUrl + '/api/products/users/', httpOptions).pipe(
       map((data: any) => {
         return new User(data);
