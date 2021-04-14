@@ -41,7 +41,7 @@ export class SignThreePage implements OnInit {
 
         const alert = await this.alertController.create({
           header: 'Registration Successful',
-          message: 'Welcome to Baratto. Please login to access the shop',
+          message: 'Welcome to Baratto.',
           buttons: ['OK'],
         });
 

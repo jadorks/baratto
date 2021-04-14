@@ -26,4 +26,5 @@ export class ChatboxComponent implements OnInit {
     this.inbox = await this.talkService.createInbox(session);
     this.inbox.mount(this.talkjsContainer.nativeElement);
     
+  }
 }
