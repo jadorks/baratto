@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductService } from "../../services/product.service";
+import { Product, ProductService, Category } from "../../services/product.service";
 
 @Component({
   selector: 'app-home-page-store',
@@ -41,6 +41,7 @@ export class HomePageStorePage implements OnInit {
   // ];
 
   products: Product[] = [];
+  categories: Category[] = [];
 
   ads = {
     image: 'assets/products/shoe-ad.png',
@@ -67,6 +68,10 @@ export class HomePageStorePage implements OnInit {
     this.productService.getProducts().subscribe((products: Product[]) => {
       console.log(products);
       this.products = products;
+    })
+
+    this.productService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
     })
   }
 }

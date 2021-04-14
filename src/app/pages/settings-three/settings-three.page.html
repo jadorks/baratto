@@ -10,11 +10,11 @@
       <ion-col class="ion-padding-horizontal ion-padding-bottom">
         <ion-item  lines="none">
           <ion-avatar slot="start">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
+              <img src="../../../assets/default_user.png">
           </ion-avatar>
-          <ion-label class="ion-no-margin">
-            <h3>Tina Marina</h3>
-            <p>iamtina.marina@gmail.com</p>
+          <ion-label class="ion-no-margin" *ngFor="let item of user | keyvalue">
+            <h3>{{ item.value.username }}</h3>
+            <p>{{ item.value.email }}</p>
           </ion-label>
         </ion-item>
       </ion-col>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User, UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-settings-three',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings-three.page.scss'],
 })
 export class SettingsThreePage implements OnInit {
+
+  user: any = {};
 
   menu = [
     {
@@ -30,9 +33,18 @@ export class SettingsThreePage implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+
+  }
+
+  ionViewWillEnter(){
+    this.userService.getProfile().subscribe(
+      result => {
+        this.user = result;
+        console.log(this.user);
+      });
   }
 
 }

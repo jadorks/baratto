@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from "@angular/common/http";
 
+import { Angular4PaystackModule } from "angular4-paystack";
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,12 +20,14 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    Angular4PaystackModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'GHC' }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Shopping Cart</ion-title>
   </ion-toolbar>
@@ -11,37 +11,41 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <p class="section ion-padding-bottom">Selected Item</p>
         <ion-list>
-          <ion-item-sliding *ngFor="let item of order.items">
+          <ion-item>
             <app-shopping-cart-item
-              [image]="item.image"
-              [name]="item.name"
-              [size]="item.size"
-              [color]="item.color"
-              [price]="item.price | currency"
+              [image]="selected.image"
+              [name]="selected.title"
+              [price]="selected.price"
             >
             </app-shopping-cart-item>
-            <ion-item-options side="end">
-              <ion-item-option>
-                <ion-button
-                  class="notif-button"
-                  fill="clear"
-                  size="small"
-                  shape="round"
-                  color="danger"
-                >
-                  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-                </ion-button>
-              </ion-item-option>
-            </ion-item-options>
-          </ion-item-sliding>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p class="section ion-padding-bottom">Payment Method</p>
+        <ion-list>
+          <ion-item>
+            <app-shopping-cart-item
+              [image]="paymentMethod.image"
+              [name]="paymentMethod.title"
+              [price]="paymentMethod.price"
+            >
+            </app-shopping-cart-item>
+            <ion-button (click)="choosePaymentMethod()" expand="block" fill="clear" shape="round" color="primary" slot="end">
+              Change
+            </ion-button>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <p class="section ion-padding-bottom">Summary</p>
-        <small>Do you have a promo code?</small>
+        <!-- <small>Do you have a promo code?</small>
         <form [formGroup]="couponForm" (ngSubmit)="applyCode()">
           <ion-item lines="none" class="input-container ion-no-padding">
             <ion-input
@@ -58,25 +62,31 @@
               <span>Apply</span>
             </ion-button>
           </ion-item>
-        </form>
+        </form> -->
         <ion-list>
           <ion-item lines="none" class="invoice-item">
             <ion-label>Subtotal</ion-label>
-            <ion-text slot="end">{{ order.subTotal | currency }}</ion-text>
+            <ion-text slot="end">{{ subTotal | currency }}</ion-text>
           </ion-item>
-          <ion-item lines="none" class="invoice-item">
+
+          <ion-item *ngIf="balance" lines="none" class="invoice-item">
+            <ion-label>Balance</ion-label>
+            <ion-text slot="end">{{ balance | currency }}</ion-text>
+          </ion-item>
+          
+          <!-- <ion-item lines="none" class="invoice-item">
             <ion-label>Shipping</ion-label>
             <ion-text slot="end">{{ order.shipping | currency }}</ion-text>
-          </ion-item>
-          <ion-item lines="none" class="invoice-item">
+          </ion-item> -->
+          <!-- <ion-item lines="none" class="invoice-item">
             <ion-label>Tax</ion-label>
             <ion-text slot="end">({{ order.tax }}%) {{ order.taxAmount | currency }}</ion-text>
-          </ion-item>
+          </ion-item> -->
         </ion-list>
         <div class="separator"></div>
         <ion-item lines="none" class="invoice-total">
           <ion-label>Total</ion-label>
-          <ion-text slot="end">{{ order.total | currency }}</ion-text>
+          <ion-text slot="end">{{ total | currency }}</ion-text>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -89,8 +99,29 @@
           color="primary"
           type="button"
         >
-          <span>Checkout Now</span>
+          <span>Offer Trade</span>
         </ion-button>
+
+        <angular4-paystack
+          [email]="'adorkorj@gmail.com'"
+          [currency]="'GHS'"
+          [amount]="total * 100"
+          [ref]="reference"
+          [channels]="['card', 'mobile_money']"
+          [class]="'btn btn-primary'"
+          (close)="paymentCancel()"
+          (callback)="paymentDone($event)"
+        >
+        <ion-button
+        class="action-button"
+        expand="block"
+        fill="solid"
+        color="primary"
+        type="button"
+      >
+        <span>Offer Trade</span>
+      </ion-button>
+        </angular4-paystack>
       </ion-col>
     </ion-row>
   </ion-grid>

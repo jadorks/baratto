@@ -6,12 +6,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-item lines="none">
+    <ion-item lines="none" [routerLink]="">
       <ion-avatar slot="start">
-          <img class="ava-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
+          <img class="ava-img" src="../../../assets/default_user.png">
       </ion-avatar>
       <ion-label class="ion-no-margin">
-        <h3>Tina Marina</h3>
+        <h3>{{ product.user }}</h3>
         <p>Seller Profile</p>
       </ion-label>
     </ion-item>
@@ -47,9 +47,34 @@
         fill="solid"
         color="primary"
         type="button"
+        [routerLink]="['/checkout', product.id]"
+        *ngIf="notOwner ; else owner"
       >
         <span>Start Trade</span>
       </ion-button>
+
+      <ng-template #owner>
+        <ion-button
+        class="action-button"
+        expand="block"
+        fill="solid"
+        color="primary"
+        type="button"
+        [routerLink]="['/edit-product', id]"
+      >
+        <span>Edit</span>
+      </ion-button>
+      <ion-button
+      class="action-button"
+      expand="block"
+      fill="solid"
+      color="danger"
+      type="button"
+      (click)="deleteProduct()"
+    >
+      <span>Delete</span>
+    </ion-button>
+      </ng-template>
       </div>
     </ion-col>
   </ion-row>

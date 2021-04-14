@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, from, Subject } from 'rxjs';
 import { map, tap, switchMap } from 'rxjs/operators';
 
@@ -91,5 +91,44 @@ export class UserService {
 
   public resetPass(){
 
+  }
+
+  public getOtherUser(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Token ' + this.token,
+      }),
+    };
+
+      return this.httpClient.get(this.baseUrl + '/api/products/users/', httpOptions).pipe(
+        map((data: any) => {
+          return new User(data);
+        })
+      )
+  }
+
+  public getProfile(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Token ' + this.token,
+      }),
+    };
+
+    return this.httpClient.get(this.baseUrl + '/api/products/users/', httpOptions).pipe(
+      map((data: any) => {
+        return new User(data);
+      })
+    )
+  }
+}
+
+export class User{
+  id: any;
+  username: any;
+  products: any;
+  email: any;
+
+  constructor( values: Object = {} ){
+    Object.assign(this, values);
   }
 }

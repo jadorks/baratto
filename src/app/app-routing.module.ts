@@ -6,7 +6,7 @@ import { AutoLoginGuard } from './guards/auto-login.guard';
 const routes: Routes = [
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule),
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule ),
     canLoad: [AuthGuard]
   },
   {
@@ -41,11 +41,11 @@ const routes: Routes = [
   },
   {
     path: 'user-catalog',
-    loadChildren: () => import('./pages/user-catalog/user-catalog.module').then( m => m.UserCatalogPageModule)
+    loadChildren: () => import('./pages/user-catalog/user-catalog.module').then( m => m.UserCatalogPageModule )
   },
   {
     path: 'user-details/:id',
-    loadChildren: () => import('./pages/user-details/user-details.module').then( m => m.UserDetailsPageModule)
+    loadChildren: () => import('./pages/user-details/user-details.module').then( m => m.UserDetailsPageModule )
   },
   {
     path: '',
@@ -54,7 +54,11 @@ const routes: Routes = [
   },
   {
     path: 'edit-product/:id',
-    loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule)
+    loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule )
+  },
+  {
+    path: 'checkout/:id',
+    loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule )
   },
 
 

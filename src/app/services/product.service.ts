@@ -69,6 +69,7 @@ export class ProductService {
   public getCategory(id: any): Observable<any> {
     return this.http.get(this.baseURL + '/category/' + id + '/').pipe(
       map((data: any) => {
+        console.log(data);
         return new Category(data);
       })
     )
