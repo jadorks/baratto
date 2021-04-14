@@ -14,7 +14,7 @@ export class UserService {
 
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
-  baseUrl: string = "http://127.0.0.1:8000";
+  baseUrl: string = "https://barattorest.herokuapp.com";
   token = '';
 
   constructor(private httpClient: HttpClient) { 
